@@ -9,4 +9,16 @@ export class AppService {
   getHello(): string {
     return 'Hello World!';
   }
+
+  getInstructionsAfterArrival() {
+    return 'test';
+  }
+
+  getInstructionsStayInPoland() {
+    return 'test';
+  }
+
+  getInstructionById(id) {
+    return 'test';
+  }
 }
