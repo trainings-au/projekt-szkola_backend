@@ -1,24 +1,36 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { Instruction } from './entity/instruction.entity';
 
 @Injectable()
 export class AppService {
-  constructor() {}
+  constructor(
+    @InjectRepository(Instruction)
+    private instructionRepository: Repository<Instruction>,
+  ) {}
 
   getHello(): string {
     return 'Hello World!';
   }
 
-  getInstructionsAfterArrival() {
-    return 'test';
+  async getInstructions() {
+    const instruction = await this.instructionRepository.find();
+    return instruction;
   }
 
-  getInstructionsStayInPoland() {
-    return 'test';
+  async getInstructionsAfterArrival() {
+    const instructionsAfter = await this.instructionRepository.find();
+    return instructionsAfter;
   }
 
-  getInstructionById(id) {
-    return 'test';
+  async getInstructionsStayInPoland() {
+    const instructionsStay = await this.instructionRepository.find();
+    return instructionsStay;
+  }
+
+  async getInstructionById(id) {
+    const instructionId = await this.instructionRepository.findOne(id);
+    return instructionId;
   }
 }

@@ -10,6 +10,11 @@ export class AppController {
     return this.appService.getHello();
   }
 
+  @Get('/instructions')
+  getInstruction() {
+    return this.appService.getInstructions();
+  }
+
   @Get('/instructions-after-arrival')
   getInstructionsAfterArrival() {
     return this.appService.getInstructionsAfterArrival();
