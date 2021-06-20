@@ -34,4 +34,5 @@ export class ContactDetail extends BaseEntity {
 
   @Column()
   longitude: number;
+
 }
