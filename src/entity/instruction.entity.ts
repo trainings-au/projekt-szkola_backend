@@ -6,11 +6,17 @@ export class Instruction extends BaseEntity {
   id: number;
 
   @Column()
-  tytul: string;
+  title: string;
 
   @Column()
-  opis: string;
+  type: string;
 
   @Column()
-  status: string;
+  description: string;
+
+  @Column()
+  icon_path: string;
+
+  @Column()
+  contact_details_id: number;
 }
