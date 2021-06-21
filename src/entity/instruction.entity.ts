@@ -19,5 +19,4 @@ export class Instruction extends BaseEntity {
 
   @Column()
   contact_details_id: number;
-
 }
