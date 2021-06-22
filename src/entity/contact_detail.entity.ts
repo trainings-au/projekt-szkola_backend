@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Instruction } from './instruction.entity';
 
 @Entity()
 export class ContactDetail extends BaseEntity {
@@ -37,4 +38,7 @@ export class ContactDetail extends BaseEntity {
 
   @Column()
   website: string;
+
+  @ManyToMany(() => Instruction, (instruction) => instruction.contact_details, {cascade: true})
+  instructions: Instruction[]
 }
