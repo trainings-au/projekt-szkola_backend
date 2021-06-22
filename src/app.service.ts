@@ -15,22 +15,22 @@ export class AppService {
   }
 
   async getInstructions() {
-    const instruction = await this.instructionRepository.find();
+    const instruction = await this.instructionRepository.find({relations: ["contact_details"]});
     return instruction;
   }
 
   async getInstructionsAfterArrival() {
-    const instructionsAfter = await this.instructionRepository.find();
+    const instructionsAfter = await this.instructionRepository.find({relations: ["contact_details"]});
     return instructionsAfter;
   }
 
   async getInstructionsStayInPoland() {
-    const instructionsStay = await this.instructionRepository.find();
+    const instructionsStay = await this.instructionRepository.find({relations: ["contact_details"]});
     return instructionsStay;
   }
 
   async getInstructionById(id) {
-    const instructionId = await this.instructionRepository.findOne(id);
+    const instructionId = this.instructionRepository.findOne(id, {relations: ["contact_details"]});
     return instructionId;
   }
 }

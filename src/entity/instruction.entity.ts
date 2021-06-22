@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { ContactDetail } from './contact_detail.entity';
 
 @Entity()
 export class Instruction extends BaseEntity {
@@ -17,6 +18,7 @@ export class Instruction extends BaseEntity {
   @Column()
   icon_path: string;
 
-  @Column()
-  contact_details_id: number;
+  @ManyToMany(() => ContactDetail, (contactDetail) => contactDetail.instructions)
+  @JoinTable()
+  contact_details: ContactDetail[];
 }
